@@ -7,6 +7,7 @@ import 'package:flutter_app/pages/products.dart';
 import 'package:flutter_app/pages/products_Admin.dart';
 import 'package:flutter_app/scoped_model/main.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:map_view/map_view.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -73,12 +74,14 @@ class _MyAppState extends State<MyApp> {
                   return x.id == productId;
                 });
                 return MaterialPageRoute<bool>(
-                    builder: (BuildContext context) => !_isAuthenticated ? AuthPage() : ProductPage(product));
+                    builder: (BuildContext context) =>
+                        !_isAuthenticated ? AuthPage() : ProductPage(product));
               }
             },
             onUnknownRoute: (RouteSettings settings) {
               return MaterialPageRoute<bool>(
-                  builder: (BuildContext context) => !_isAuthenticated ? AuthPage() : ProductsPage(_model));
+                  builder: (BuildContext context) =>
+                      !_isAuthenticated ? AuthPage() : ProductsPage(_model));
             }));
   }
 }
